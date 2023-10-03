@@ -40,16 +40,6 @@
 #define BTN_INSTANCE1    sl_button_btn1
 #endif
 
-/*
-#ifndef TOOGLE_DELAY_MS_LED0
-#define TOOGLE_DELAY_MS_LED0         500
-#endif
-
-#ifndef TOOGLE_DELAY_MS_LED1
-#define TOOGLE_DELAY_MS_LED1         1000
-#endif
-*/
-
 /*******************************************************************************
  ***************************  LOCAL VARIABLES   ********************************
  ******************************************************************************/
