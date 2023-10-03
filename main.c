@@ -26,13 +26,41 @@
 #include "sl_system_process_action.h"
 #endif // SL_CATALOG_KERNEL_PRESENT
 
+
+#define EM_EVENT_MASK_ALL      (  SL_POWER_MANAGER_EVENT_TRANSITION_ENTERING_EM0 \
+                                | SL_POWER_MANAGER_EVENT_TRANSITION_LEAVING_EM0  \
+                                | SL_POWER_MANAGER_EVENT_TRANSITION_ENTERING_EM1 \
+                                | SL_POWER_MANAGER_EVENT_TRANSITION_LEAVING_EM1  \
+                                | SL_POWER_MANAGER_EVENT_TRANSITION_ENTERING_EM2 \
+                                | SL_POWER_MANAGER_EVENT_TRANSITION_LEAVING_EM2  \
+                                | SL_POWER_MANAGER_EVENT_TRANSITION_ENTERING_EM3 \
+                                | SL_POWER_MANAGER_EVENT_TRANSITION_LEAVING_EM3)
+
+
+
+void my_callback(sl_power_manager_em_t from,
+                 sl_power_manager_em_t to);
+
+sl_power_manager_em_transition_event_handle_t event_handle;
+sl_power_manager_em_transition_event_info_t event_info = {
+  .event_mask = EM_EVENT_MASK_ALL,
+  .on_event = my_callback,
+};
+
+void my_callback(sl_power_manager_em_t from, 
+                 sl_power_manager_em_t to)
+{
+  sl_power_manager_em_t transitioning_to = to;
+}
+
+
 int main(void)
 {
   // Initialize Silicon Labs device, system, service(s) and protocol stack(s).
   // Note that if the kernel is present, processing task(s) will be created by
   // this call.
   sl_system_init();
-
+  sl_power_manager_subscribe_em_transition_event(&event_handle, &event_info);
   // Initialize the application. For example, create periodic timer(s) or
   // task(s) if the kernel is present.
   app_init();
