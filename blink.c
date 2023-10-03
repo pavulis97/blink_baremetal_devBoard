@@ -54,6 +54,7 @@ uint32_t toggle_delay_ms_led0 = 500;
 uint32_t toggle_delay_ms_led1 = 500;
 
 //commit1
+//commit2
 
 /*******************************************************************************
  *********************   LOCAL FUNCTION PROTOTYPES   ***************************
